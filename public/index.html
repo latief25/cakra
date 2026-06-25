@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C.A.K.R.A. // Cakrawala Analisis Kebijakan & Risiko Aliran</title>
+  
+  <!-- Import Orbitron and Rajdhani from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for high-tech icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Fullscreen Vis.js Network Canvas Background -->
+  <div id="network-canvas"></div>
+
+  <!-- Futuristic Scanline Effect Overlay -->
+  <div class="scanlines"></div>
+
+  <!-- Top Floating Bar -->
+  <header class="top-bar">
+    <div class="header-logo">
+      <i class="fa-solid fa-shield-halved logo-icon"></i>
+      <div>
+        <span class="logo-title">C.A.K.R.A.</span>
+        <span class="logo-subtitle">// PROTOKOL PREDIKSI</span>
+      </div>
+    </div>
+    
+    <div class="header-center">
+      <div class="system-time-display">
+        <i class="fa-regular fa-clock"></i>
+        <span id="system-time">00:00:00 WITA</span>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button id="btn-new-simulation" class="btn-new-sim">
+        <i class="fa-solid fa-plus"></i> [+] SIMULASI BARU
+      </button>
+    </div>
+  </header>
+
+  <!-- Network Spike Warning Banner -->
+  <div id="network-warning" class="hidden">
+    <i class="fa-solid fa-triangle-exclamation"></i> [NETWORK I/O SPIKE DETECTED - RECALCULATING NODE ROUTES...]
+  </div>
+
+  <!-- Main Floating Interface Grid -->
+  <div class="dashboard-workspace">
+    
+    <!-- Left Info / Diagnostics Card (User-friendly details) -->
+    <div class="floating-panel left-info-card">
+      <div class="panel-header">
+        <i class="fa-solid fa-microchip"></i> DIAGNOSTIK MESIN
+      </div>
+      <div class="diagnostics-grid">
+        <div class="diag-item">
+          <span class="diag-label">Core Utama:</span>
+          <span class="diag-value text-cyan glow-cyan" id="diag-active-engine">GEMINI 2.5</span>
+        </div>
+        <div class="diag-item">
+          <span class="diag-label">Integritas Jalur:</span>
+          <span class="diag-value text-green glow-green" id="diag-path-status">OPTIMAL</span>
+        </div>
+        <div class="diag-item">
+          <span class="diag-label">Akurasi Sistem:</span>
+          <span class="diag-value text-cyan glow-cyan" id="diag-accuracy">99.87%</span>
+        </div>
+        <div class="diag-item">
+          <span class="diag-label">Timezone:</span>
+          <span class="diag-value text-cyan glow-cyan">WITA (GMT+8)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Sleek Analysis Panel -->
+    <div id="analysis-panel" class="floating-panel">
+      <!-- Top Glowing Metrics Header -->
+      <div class="analysis-metrics">
+        <div class="metric-box">
+          <span class="metric-label" id="metric-outlook-lbl">OUTLOOK SIMULASI</span>
+          <span class="metric-val text-cyan glow-cyan" id="metric-outlook-val">45%</span>
+        </div>
+        <div class="metric-box">
+          <span class="metric-label">ANOMALI DATA</span>
+          <span class="metric-val text-orange glow-orange">12</span>
+        </div>
+        <div class="metric-box">
+          <span class="metric-label">AKURASI FORECAST</span>
+          <span class="metric-val text-cyan glow-cyan">99.87%</span>
+        </div>
+        <div class="metric-box">
+          <span class="metric-label">AUTOROUTER API</span>
+          <span class="metric-val text-green glow-green">AKTIF</span>
+        </div>
+      </div>
+
+      <!-- Sub-header Row for Actions -->
+      <div class="panel-subheader">
+        <div class="panel-sub-title">
+          <i class="fa-solid fa-terminal text-cyan"></i> Konsol Simulasi Aktif
+        </div>
+        <button id="btn-export" class="btn-export">
+          <i class="fa-solid fa-file-pdf"></i> EKSPOR PDF
+        </button>
+      </div>
+
+      <!-- Chat Screen / Log Output area -->
+      <div class="chat-screen" id="chat-screen">
+        
+        <!-- Welcome Card Description -->
+        <div id="welcome-card" class="welcome-card">
+          <div class="welcome-header">
+            <i class="fa-solid fa-network-wired welcome-icon"></i>
+            <h2>SIMULATOR PREDIKTIF MAKRO C.A.K.R.A.</h2>
+          </div>
+          <p class="welcome-desc">
+            Selamat datang di **C.A.K.R.A. (Cakrawala Analisis Kebijakan & Risiko Aliran)**. Sistem simulasi ini memproyeksikan efek domino sosio-ekonomi, rantai pasok lokal, dan logistik bisnis terhadap kebijakan publik atau tren global secara otomatis.
+          </p>
+          <div class="welcome-features">
+            <h3>Panduan Pengoperasian:</h3>
+            <ul>
+              <li><i class="fa-solid fa-chevron-right text-cyan"></i> Masukkan skenario peristiwa makro pada input di bawah.</li>
+              <li><i class="fa-solid fa-chevron-right text-cyan"></i> Grafik node visual di latar belakang akan berinteraksi dan tumbuh seiring berjalannya simulasi.</li>
+              <li><i class="fa-solid fa-chevron-right text-cyan"></i> **Fitur Auto-Failover**: Jika API key Gemini habis, sistem secara otomatis dialihkan ke Groq Llama tanpa gangguan.</li>
+            </ul>
+          </div>
+          <div class="welcome-security-note">
+            <span class="warning-title"><i class="fa-solid fa-key"></i> KUNCI API DARURAT</span>
+            <p>Ketik **nama lengkap peserta** pada kolom input jika koneksi API terputus atau kunci server kosong untuk memulihkan kunci darurat secara instan.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Capsule Dock -->
+  <div id="control-dock">
+    <div class="dock-stats">
+      <div class="stat-item">
+        <span class="stat-label">Tingkat Kepatuhan:</span>
+        <span class="stat-value text-cyan glow-cyan" id="stat-compliance">84.2%</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-label">Total Variabel:</span>
+        <span class="stat-value text-cyan glow-cyan" id="stat-variables">1,402</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-label">Koneksi Core:</span>
+        <span class="stat-value text-green glow-green" id="stat-connection">AKTIF</span>
+      </div>
+    </div>
+
+    <!-- Pill Chat input form -->
+    <form id="chat-form" class="dock-input-form">
+      <input 
+        type="text" 
+        id="user-input" 
+        placeholder="MASUKKAN PARAMETER SKENARIO MAKRO..." 
+        autocomplete="off"
+        required
+      />
+      <button type="submit" class="btn-run" id="btn-run">
+        <span class="btn-text">RUN SIMULATION</span>
+      </button>
+    </form>
+  </div>
+
+  <!-- Vis.js Network Script -->
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
