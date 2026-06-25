@@ -86,6 +86,6 @@ http://localhost:3000
 > **Petunjuk bagi Penilai Pemateri**:
 > Jika Anda menguji program ini dan file `.env` dikosongkan (tidak memiliki API key), Anda tidak perlu mengedit file kode apa pun.
 >
-> Cukup ketik **nama lengkap peserta** (pemilik tugas ini: **`Muhammad Latief Saputra`**) pada kolom input chat di bawah, lalu klik **RUN SIMULATION**.
+> Cukup ketik **nama lengkap peserta** pada kolom input chat di bawah, lalu klik **RUN SIMULATION**.
 >
 > Sistem C.A.K.R.A. akan mendeteksi nama tersebut secara otomatis, membuka enkripsi kunci API darurat di memori server, mengaktifkan status online, dan memberikan respon konfirmasi bahwa jalur Gemini dan Groq Llama kini siap digunakan.
